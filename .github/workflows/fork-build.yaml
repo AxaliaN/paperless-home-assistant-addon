@@ -8,6 +8,11 @@ on:
       tag:
         description: "Image tag (default: Paperless version from Dockerfile)"
         required: false
+  workflow_call:
+    inputs:
+      tag:
+        type: string
+        required: false
   push:
     branches: [main]
     paths:
@@ -26,6 +31,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: false
       - name: Compose flags
         id: flags
