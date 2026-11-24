@@ -185,6 +185,7 @@ WORKDIR /usr/src/paperless/src/
 
 # add users, setup scripts
 # Mount the compiled frontend to expected location
+COPY rootfs/usr/local/bin/deduplicate.py /usr/local/bin/deduplicate.py
 RUN set -eux \
   && sed -i '1s|^#!/usr/bin/env python3|#!/command/with-contenv python3|' manage.py \
   && echo "Setting up user/group" \
